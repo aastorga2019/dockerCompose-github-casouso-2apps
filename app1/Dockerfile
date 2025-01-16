@@ -11,7 +11,7 @@ COPY app1.py /app1
 RUN pip install Flask
 
 # Exponer el puerto en el que corre la aplicación
-EXPOSE 8091
+EXPOSE 8080
 
 # Comando para ejecutar la aplicación
 CMD ["python", "app1.py"]

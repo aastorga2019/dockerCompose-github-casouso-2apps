@@ -7,4 +7,4 @@ def hello_world():
     return "¡Hola, Uso de Docker-compose APP-2 arriba!"
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=8092)
+    app.run(host="0.0.0.0", port=8080)

@@ -26,7 +26,7 @@ Obj:
 Como correr:
 En el DIR de trabajo, generar build con (docker build -t app1:1.0.0 ./app1) para cada app
 Subir imagenes contruidas a un registry remoto (docker tag app1:1.0.0 usuario/app1:1.0.0) y (docker push usuario/app1:1.0.0)
-Para poder subir imagenes al registry, necesitas logearte en docker hub (docker login -u aastorga2019 + pass)
+** Para poder subir imagenes al registry, necesitas logearte en docker hub (docker login -u aastorga2019 + pass)
 Cada vez que actualices una APP y se genere nueva imagen, en el docker-compose.yml sólo debes modificar las nuevas images de las apps
 Puedes usar gitHub Actions para automatizar proceso de construccion y despliegue
 
