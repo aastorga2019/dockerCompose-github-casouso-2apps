@@ -1,6 +1,9 @@
 OBJETIVO:
 Cada vez que generes una nueva versión de las APPs, debes marcarla con un TAG. Esto asocia TAG vs COMMIT, y con ello, puedes ir 
 cambiando de version en version tus APPs e indicarle al GitHub Action (workflow), que ponga en producción la nueva version.
+(% git tag -a v1.0.0 -m "Versión inicial de app1 y app2")
+(% git push origin --tags)
+
 
 - Gestionar release y despliegue de 3 apps en server on-premise, con github y docker compose.
 - Usar TAGs en github, para marcar las versiones de mi codigo. Por tanto, cada vez que actualices una o mas app, 
