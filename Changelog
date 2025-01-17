@@ -3,6 +3,8 @@ Bitacora control de cambios.
 Fecha   TAG     Tipo    Responsanle         Detalles
                 (A/M/B) 
 ------------------------------------------------------------------------------------------------------
+
+170125  1.1.4   Bajo    Angelo Astorga      Cambio interno en App2, al 17 Ene en front
 170125  1.1.0   Medio   Angelo Astorga      Cambio interno en la App1, flujo de pago.
 160125          Bajo    Angelo Astorga      Se agrega archivo Changelog para control de cambios.
 160125  1.0.0   Alto    Angelo Astorga      Se configura mbiente para Build y Deploy automatico entre Gitlhub y Docker-compose

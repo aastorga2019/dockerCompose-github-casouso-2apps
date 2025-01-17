@@ -2,15 +2,16 @@ version: '3.8'
 
 services:
   app1:
-#    image: aastorga2019/app1:1.1.0
-    image: app1:1.1.0
+    image: aastorga2019/app1:1.1.4
+#    image: app1:1.1.4
     ports:
       - "8091:8080"
     environment:
       - ENV=production
 
   app2:
-    image: app2:1.0.0
+    image: aastorga2019/app2:1.1.4
+#    image: app2:1.1.4
     ports:
       - "8092:8080"
     environment:

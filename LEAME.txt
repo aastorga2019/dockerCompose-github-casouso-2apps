@@ -1,11 +1,29 @@
 OBJETIVO:
-Cada vez que generes una nueva versión de las APPs, debes marcarla con un TAG. Esto asocia TAG vs COMMIT, y con ello, puedes ir 
-cambiando de version en version tus APPs e indicarle al GitHub Action (workflow), que ponga en producción la nueva version.
-(% git tag -a v1.0.0 -m "Versión inicial de app1 y app2")
-(% git push origin --tags)
+Cada vez que generes una nueva versión de la o las APPs y quieras llevarla a PROD, debes si o si, crear un nuevo TAG. 
+Esto asocia el TAG al COMMIT de la nueva version, y con ello, puedes ir iterando y/o mejorando tus APPs en PROD.
 
+El repositorio donde se guarda el codigo es GitHub y este maneja un Workflow de Build y Deploy a nivel de actions, 
+el cual detecta el nuevo TAG y almacena todas las imagenes de las APPs en un Registry, en este ejemplo, Docker Hub.
+Por lo tanto, hasta podria volver atras en versiones de las APPs.
 
-- Gestionar release y despliegue de 3 apps en server on-premise, con github y docker compose.
+Las tecnologias utilizadas acá, son GitHub (Repositorio y workflow), Docker (app contenerizadas, registry de imagenes)
+y docker-compose (orquestador y deploy de servicios)
+
+En el caso, de querer volver a una versión anterior o Rollback, sólo basta con cambiar las versiones (si existen) en el
+docker-compose.yaml y volver a subir los servicios (ojo, con al generar nuevo Tag, lo va a pisar)
+
+Hemos generado un archivo de "Changelog", para ir llevando un detalle o bitacora de todos los release y/o tag en PROD.
+
+Cómo tageo una nueva version?
+% git tag -a v1.0.0 -m "Versión inicial de app1 y app2"
+% git push origin --tags
+
+Lo ideal antes de tagear, tu debes generar y probar los cambios de tus APPs (tal vez en una rama feature) y una vez seguro,
+que todo funciona PERFECTO, mergear y subir a master. Luego y recien allí, puedes tagear y el workflow de Github hará su magia.
+
+Resumen a la fecha.
+
+- Gestionar release y despliegue de 2 apps en server on-premise, con github y docker compose.
 - Usar TAGs en github, para marcar las versiones de mi codigo. Por tanto, cada vez que actualices una o mas app, 
     asegurate de crear nueva etiqueta, para marcar nuevo RELEASE. y obviamente llevar bitacora con los cambios. 
 - Para cada cambio de version, implica:
@@ -14,6 +32,9 @@ cambiando de version en version tus APPs e indicarle al GitHub Action (workflow)
     - Generar nueva imagen etiquetada con la version
     - Subir
 - El Docker-compose es quien determina las versiones de APPs a trabajar
+
+
+Estructura Repositorio.
 
 /repositorio
 ├── app1/
@@ -29,12 +50,3 @@ cambiando de version en version tus APPs e indicarle al GitHub Action (workflow)
 │   ├── código fuente
 │   ├── docker-compose.override.yml
 └── docker-compose.yml
-
-Como correr:
-En el DIR de trabajo, generar build con (docker build -t app1:1.0.0 ./app1) para cada app
-Subir imagenes contruidas a un registry remoto (docker tag app1:1.0.0 usuario/app1:1.0.0) y (docker push usuario/app1:1.0.0)
-** Para poder subir imagenes al registry, necesitas logearte en docker hub (docker login -u aastorga2019 + pass)
-Cada vez que actualices una APP y se genere nueva imagen, en el docker-compose.yml sólo debes modificar las nuevas images de las apps
-Puedes usar gitHub Actions para automatizar proceso de construccion y despliegue
-
-
