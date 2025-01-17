@@ -1,4 +1,7 @@
-Obj:
+OBJETIVO:
+Cada vez que generes una nueva versión de las APPs, debes marcarla con un TAG. Esto asocia TAG vs COMMIT, y con ello, puedes ir 
+cambiando de version en version tus APPs e indicarle al GitHub Action (workflow), que ponga en producción la nueva version.
+
 - Gestionar release y despliegue de 3 apps en server on-premise, con github y docker compose.
 - Usar TAGs en github, para marcar las versiones de mi codigo. Por tanto, cada vez que actualices una o mas app, 
     asegurate de crear nueva etiqueta, para marcar nuevo RELEASE. y obviamente llevar bitacora con los cambios. 
@@ -7,6 +10,7 @@ Obj:
     - Modificar archivo Dockerfile si es necesario,
     - Generar nueva imagen etiquetada con la version
     - Subir
+- El Docker-compose es quien determina las versiones de APPs a trabajar
 
 /repositorio
 ├── app1/
@@ -29,4 +33,5 @@ Subir imagenes contruidas a un registry remoto (docker tag app1:1.0.0 usuario/ap
 ** Para poder subir imagenes al registry, necesitas logearte en docker hub (docker login -u aastorga2019 + pass)
 Cada vez que actualices una APP y se genere nueva imagen, en el docker-compose.yml sólo debes modificar las nuevas images de las apps
 Puedes usar gitHub Actions para automatizar proceso de construccion y despliegue
+
 

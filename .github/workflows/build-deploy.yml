@@ -24,8 +24,17 @@ jobs:
     - name: Run a one-line script
       run: echo Hello, comenzando Build and Deploy on Docker-compose!
 
+    - name: Valor variables de ambiente PREDEFINIDAS, eliminar al final
+      run: |
+        echo "Repositorio: $GITHUB_REPOSITORY"
+        echo "Rama: $GITHUB_REF"
+        echo "Tag: $GITHUB_REF_NAME"
+        
     - name: Checkout code
       uses: actions/checkout@v3
+
+    - name: Log in to Docker Hub
+      run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
 
     - name: Build and push app1
       run: |
