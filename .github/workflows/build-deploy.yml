@@ -47,12 +47,12 @@ jobs:
         docker push aastorga2019/app2:${{ github.ref_name }}
 
 #ojo, si cambia ip pub, no sirve de nada
-    - name: Agregar clave del Server a un archivo personalizado known_hosts 
-      run: |
-        mkdir -p ~/.ssh
-        ssh-keyscan -H 186.107.180.35 >> ~/.ssh/custom_known_hosts
+#    - name: Agregar clave del Server a un archivo personalizado known_hosts 
+#      run: |
+#        mkdir -p ~/.ssh
+#        ssh-keyscan -H 186.107.180.35 >> ~/.ssh/custom_known_hosts
 
 #ip local 192.168.1.143, publica 186.107.180.35 (es variable) // inseguro flag -o Stric... sólo para bypasear pass 
     - name: Deploy for shh to server last version APPs
-#      run: ssh -o StrictHostKeyChecking=no a.astorga@186.107.180.35 "cd /Users/a.astorga/Documents/Proyectos/Latam/Revisar/dockerCompose-github-casouso-2apps && docker-compose pull && docker-compose up -d"
-      run: ssh -o UserKnownHostsFile=~/.ssh/custom_known_hosts a.astorga@186.107.180.35 "cd /Users/a.astorga/Documents/Proyectos/Latam/Revisar/dockerCompose-github-casouso-2apps && docker-compose pull && docker-compose up -d"
+      run: ssh -o StrictHostKeyChecking=no a.astorga@186.107.180.35 "cd /Users/a.astorga/Documents/Proyectos/Latam/Revisar/dockerCompose-github-casouso-2apps && docker-compose pull && docker-compose up -d"
+#      run: ssh -o UserKnownHostsFile=~/.ssh/custom_known_hosts a.astorga@186.107.180.35 "cd /Users/a.astorga/Documents/Proyectos/Latam/Revisar/dockerCompose-github-casouso-2apps && docker-compose pull && docker-compose up -d"
